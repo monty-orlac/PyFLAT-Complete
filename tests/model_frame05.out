@@ -1,0 +1,195 @@
+************************************************************
+************************************************************
+****                                                    ****
+**      PyFLAT - Python program for                       **
+**           Finite-element Linear Analysis Tutorial      **
+****                                                    ****
+************************************************************
+************************************************************
+
+This program was started in validate mode.
+Skipping version, license, and execution time notation.
+
+
+Configuration via commandline arguments:  ==================
+Matrix solver                           :      DIRECT
+  ... Fast sparse direct solver (via SciPy).
+Reordering algorithm                    :         RCM
+  ... Reverse Cuthill-McKee (RCM) method to optimize the sparsity pattern.
+Verbose diagnostics output mode         :        TRUE
+Peak-relative truncation tolerance      :  1.0000e-08
+Hourglass stabilization coefficient     :      0.0100
+
+
+************************************************************************
+**  Pre-assembling the global stiffness matrix
+************************************************************************
+
+Reading model data:  =======================================
+Analysis input file:
+  tests\model_frame05.in
+
+Start reading the file:
+NODE section...
+MATERIAL section...
+PROPERTY section...
+ELEMENT section...
+Done.
+
+
+Performing symbolic assembly:  =============================
+Start element loop...
+  Done.
+
+<<DEBUG>> Nodal DOFs assignment
+     nid   dof_x   dof_y
+       1   FIXED   FIXED
+       2       1       0
+       3       5       4
+       4       3       2
+       5       6   FIXED
+Total 7 DOFs assigned to the model.
+
+
+Analyzing non-zero sparsity pattern:  ----------
+Start element loop...
+  Done.
+
+
+************************************************************************
+**  Load case #01
+************************************************************************
+
+Assembling global stiffness matrix:  =======================
+Applying loading & boundary conditions:  -------
+Reading data...
+Generating load vector...
+Done.
+
+<<DEBUG>> Load vector
+  01:    0.000000e+00
+  02:    0.000000e+00
+  03:    0.000000e+00
+  04:    0.000000e+00
+  05:   -2.400000e+05
+  06:    0.000000e+00
+  07:    0.000000e+00
+
+
+Performing numeric assembly:  ------------------
+Start element loop...
+  Done.
+
+<<DEBUG>> Matrix components:
+scaling factor for matrix elements:       x10^9
+   1: [  0.672                                           ]
+   2: [  0.000  0.704                                    ]
+   3: [  0.000  0.000  0.672                             ]
+   4: [  0.000 -0.441  0.000  0.704                      ]
+   5: [ -0.336  0.210 -0.336 -0.210  0.672               ]
+   6: [  0.210 -0.131 -0.210 -0.131  0.000  1.145        ]
+   7: [    ...    ...  0.210 -0.131  0.000 -0.441  0.572 ]
+
+
+Solving the matrix:  =======================================
+Perform general LU decomposition...
+  Done.
+
+Matrix profile summary:
+  number of equations        =           7
+  number of matrix elements  =          35
+  matrix density             =  71.4286[%]
+
+Performing forward/backward substitution...
+  Done.
+
+
+Post-processing:  ==========================================
+Nodal displacement result:  --------------------
+     nid          x-disp          y-disp
+       1    0.000000e+00    0.000000e+00
+       2    3.401361e-04   -5.695682e-04
+       3    1.700680e-04   -1.032844e-03
+       4    0.000000e+00   -5.695682e-04
+       5    3.401361e-04    0.000000e+00
+
+
+Element stress result:  ------------------------
+     eid  ip           str11           str22           str33           str12
+       1   1   -3.369279e+07
+       2   1    1.785714e+07
+       3   1    3.369279e+07
+       4   1   -3.571429e+07
+       5   1    3.369279e+07
+       6   1    1.785714e+07
+       7   1   -3.369279e+07
+
+
+************************************************************************
+**  Load case #02
+************************************************************************
+
+Assembling global stiffness matrix:  =======================
+Applying loading & boundary conditions:  -------
+Reading data...
+Generating load vector...
+Done.
+
+<<DEBUG>> Load vector
+  01:   -2.400000e+05
+  02:    0.000000e+00
+  03:    0.000000e+00
+  04:    0.000000e+00
+  05:    0.000000e+00
+  06:    0.000000e+00
+  07:    0.000000e+00
+
+
+Performing numeric assembly:  ------------------
+Start element loop...
+  Done.
+
+<<DEBUG>> Matrix components:
+scaling factor for matrix elements:       x10^9
+   1: [  0.672                                           ]
+   2: [  0.000  0.704                                    ]
+   3: [  0.000  0.000  0.672                             ]
+   4: [  0.000 -0.441  0.000  0.704                      ]
+   5: [ -0.336  0.210 -0.336 -0.210  0.672               ]
+   6: [  0.210 -0.131 -0.210 -0.131  0.000  1.145        ]
+   7: [    ...    ...  0.210 -0.131  0.000 -0.441  0.572 ]
+
+
+Solving the matrix:  =======================================
+Perform general LU decomposition...
+  Done.
+
+Matrix profile summary:
+  number of equations        =           7
+  number of matrix elements  =          35
+  matrix density             =  71.4286[%]
+
+Performing forward/backward substitution...
+  Done.
+
+
+Post-processing:  ==========================================
+Nodal displacement result:  --------------------
+     nid          x-disp          y-disp
+       1    0.000000e+00    0.000000e+00
+       2    2.976190e-04   -7.214866e-04
+       3    2.551020e-04   -5.695682e-04
+       4    1.275510e-04   -3.113572e-04
+       5    3.401361e-04    0.000000e+00
+
+
+Element stress result:  ------------------------
+     eid  ip           str11           str22           str33           str12
+       1   1   -5.053918e+07
+       2   1    2.678571e+07
+       3   1   -1.684639e+07
+       4   1   -1.785714e+07
+       5   1    1.684639e+07
+       6   1    8.928571e+06
+       7   1   -1.684639e+07
+

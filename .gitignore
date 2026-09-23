@@ -1,0 +1,24 @@
+# Python のバイトコード
+__pycache__/
+*.py[codz]
+
+# Numba の JIT コンパイル結果のキャッシュ (@numba.njit(cache=True) 指定時に生成)
+*.nbi
+*.nbc
+
+# 仮想環境
+.venv/
+venv/
+
+# 回帰テストの実行結果 (docs/DEVELOPMENT.md 参照)
+tests/*.new
+tests_cmp/
+benchmarks_cmp/
+
+# OS が生成するファイル
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# その他ファイル
+*.bat

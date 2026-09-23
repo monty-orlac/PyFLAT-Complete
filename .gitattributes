@@ -1,0 +1,12 @@
+# テキストファイルはリポジトリ内では LF で管理し、
+# チェックアウト時に各 OS の改行コードへ変換する
+* text=auto
+
+*.py   text diff=python
+*.md   text diff=markdown
+*.in   text
+*.out  text
+
+# Windows のバッチファイルは常に CRLF
+*.bat  text eol=crlf
+*.cmd  text eol=crlf

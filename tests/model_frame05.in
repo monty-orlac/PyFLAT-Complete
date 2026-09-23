@@ -1,0 +1,42 @@
+// Fndamental program test with 5-NODE truss structure
+
+// ***************************************
+//  Model definition
+// ***************************************
+NODE
+  NODE,    1,    1,    1,    0.00000,    0.00000,
+  NODE,    2,    0,    0,    1.00000,    1.60000,
+  NODE,    3,    0,    0,    2.00000,    0.00000,
+  NODE,    4,    0,    0,    3.00000,    1.60000,
+  NODE,    5,    0,    1,    4.00000,    0.00000,
+END
+
+MATERIAL
+  MTRUSS,   1,     210.0e+9,
+END
+
+PROPERTY
+  PTRUSS,   1,     1,    0.0042000,
+END
+
+ELEMENT
+  TRUSS,    1,     1,     1,     2,
+  TRUSS,    2,     1,     1,     3,
+  TRUSS,    3,     1,     2,     3,
+  TRUSS,    4,     1,     2,     4,
+  TRUSS,    5,     1,     3,     4,
+  TRUSS,    6,     1,     3,     5,
+  TRUSS,    7,     1,     4,     5,
+END
+
+// ***************************************
+//  Loadcase definition
+// ***************************************
+LOADCASE
+CASE
+  PLOAD,    3,     2,    -240000.0,
+END
+CASE
+  PLOAD,    2,     2,    -240000.0,
+END
+END
